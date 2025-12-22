@@ -33,3 +33,18 @@
 //     </div>
 //   );
 // }
+
+"use client";
+
+import { useState } from "react";
+
+export default function ServerHuk() {
+  const [count, setCount] = useState(1);
+  return (
+    <div>
+      <h1> Tes SSR tanpa use Client with hooks</h1>
+      <p>count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Tambah +</button>
+    </div>
+  );
+}
