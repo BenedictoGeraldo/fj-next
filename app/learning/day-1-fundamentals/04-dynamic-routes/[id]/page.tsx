@@ -22,20 +22,18 @@ export default async function ProductDetailPage({
       <div>
         <h1>Produk tidak ditemukan</h1>
         <p>ID: {id}</p>
-        <Link href="/learning/day-1-fundamentals/04-dynamic-routes">
-          Kembali
-        </Link>
+        <Link href="./">Kembali</Link>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className="bg-white min-h-screen text-black">
       <h1>{product.name}</h1>
       <p>Harga: {product.price}</p>
       <p>ID: {id}</p>
 
-      <Link href="/learning/day-1-fundamentals/04-dynamic-routes">Kembali</Link>
+      <Link href="./">Kembali</Link>
     </div>
   );
 }
