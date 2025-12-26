@@ -17,7 +17,7 @@ export default async function FetchServerPage() {
   const users: user[] = await res.json();
 
   return (
-    <div>
+    <div className="text-black bg-white">
       <h1>Fetch Data Di Server</h1>
       <hr />
       <ul>
@@ -30,6 +30,27 @@ export default async function FetchServerPage() {
           </li>
         ))}
       </ul>
+
+      <table className="border-collapse  border min-w-full text-center">
+        <thead>
+          <tr>
+            <th className="border">ID</th>
+            <th className="border">Name</th>
+            <th className="border">Email</th>
+            <th className="border">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td className="border">{user.id}</td>
+              <td className="border">{user.name}</td>
+              <td className="border">{user.email}</td>
+              <td className="border">{user.username}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
