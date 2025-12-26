@@ -1,56 +1,43 @@
-type user = {
+type post = {
   id: number;
-  name: string;
-  email: string;
-  username: string;
+  title: string;
+  body: string;
 };
 
 export default async function FetchServerPage() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
 
-  if (!res.ok) {
-    return <div>Error: Gagal Fetch Data</div>;
-  }
+    const posts: post[] = await res.json();
 
-  const users: user[] = await res.json();
+    const limitedPosts = posts.slice(0, 6);
 
-  return (
-    <div className="text-black bg-white">
-      <h1>Fetch Data Di Server</h1>
-      <hr />
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
-            <p>{user.username}</p>
-            <hr />
-          </li>
+    return (
+      <div>
+        <h1>Fetch 6 data dari url Posts</h1>
+        {limitedPosts.map((post) => (
+          <div key={post.id}>
+            <p>POST ID: {post.id}</p>
+            <h2>Title: {post.title}</h2>
+            <p>{post.body}</p>
+          </div>
         ))}
-      </ul>
-
-      <table className="border-collapse  border min-w-full text-center">
-        <thead>
-          <tr>
-            <th className="border">ID</th>
-            <th className="border">Name</th>
-            <th className="border">Email</th>
-            <th className="border">Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td className="border">{user.id}</td>
-              <td className="border">{user.name}</td>
-              <td className="border">{user.email}</td>
-              <td className="border">{user.username}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+      </div>
+    );
+  } catch (error) {
+    return (
+      <div>
+        <h3>Error!!</h3>
+        <p>
+          Gagal fetch data:{" "}
+          {error instanceof Error ? error.message : "Unknown error"}
+        </p>
+      </div>
+    );
+  }
 }
