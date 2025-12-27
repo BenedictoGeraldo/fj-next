@@ -4,5 +4,9 @@ export async function GET() {
     { id: 2, name: "Handphone", price: 9120000 },
   ];
 
-  return Response.json(products);
+  return new Response(JSON.stringify(products, null, 2), {
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+  });
 }
