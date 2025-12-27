@@ -1,4 +1,4 @@
-type post = {
+type Post = {
   id: number;
   title: string;
   body: string;
@@ -13,7 +13,7 @@ export default async function FetchServerPage() {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
 
-    const posts: post[] = await res.json();
+    const posts: Post[] = await res.json();
 
     const limitedPosts = posts.slice(0, 6);
 
