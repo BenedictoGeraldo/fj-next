@@ -9,7 +9,7 @@ type Post = {
 };
 
 export default function FetchClientPage() {
-  const [posts, setposts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,7 +26,7 @@ export default function FetchClientPage() {
         }
 
         const data: Post[] = await res.json();
-        setposts(data);
+        setPosts(data.slice(10, 20));
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
