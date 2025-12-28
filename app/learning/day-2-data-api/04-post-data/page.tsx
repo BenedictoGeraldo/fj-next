@@ -1,12 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-};
+import { useState } from "react";
 
 export default function PostDataPage() {
   const [name, setName] = useState("");
@@ -69,7 +63,7 @@ export default function PostDataPage() {
         <div>
           <label>Harga Produk</label>
           <input
-            type="number"
+            type="number    "
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
