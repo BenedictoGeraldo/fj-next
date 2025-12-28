@@ -8,5 +8,6 @@ export default function main() {
   // redirect("/learning/day-1-fundamentals/04-dynamic-routes");
   // redirect("/learning/day-2-data-api/01-fetch-server");
   // redirect("/learning/day-2-data-api/02-fetch-client");
-  redirect("/learning/day-2-data-api/03-api-routes");
+  // redirect("/learning/day-2-data-api/03-api-routes");
+  redirect("/learning/day-2-data-api/04-post-data");
 }
