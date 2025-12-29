@@ -13,5 +13,6 @@ export default function main() {
   // redirect("/learning/day-2-data-api/05-error-loading");
   // redirect("/learning/day-3-libraries/axios/axios-get");
   // redirect("/learning/day-3-libraries/axios/axios-post");
-  redirect("/learning/day-3-libraries/axios/axios-put");
+  // redirect("/learning/day-3-libraries/axios/axios-put");
+  redirect("/learning/day-3-libraries/axios/axios-delete");
 }
