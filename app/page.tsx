@@ -11,5 +11,6 @@ export default function main() {
   // redirect("/learning/day-2-data-api/03-api-routes");
   // redirect("/learning/day-2-data-api/04-post-data");
   // redirect("/learning/day-2-data-api/05-error-loading");
-  redirect("/learning/day-3-libraries/axios/axios-get");
+  // redirect("/learning/day-3-libraries/axios/axios-get");
+  redirect("/learning/day-3-libraries/axios/axios-post");
 }
