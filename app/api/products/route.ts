@@ -1,58 +1,49 @@
-// Bikin data dummy dulu
+// Database dummy (dalam real app, ini dari database)
 const products = [
   { id: 1, name: "Laptop", price: 9000000 },
   { id: 2, name: "Handphone", price: 4500000 },
 ];
 
+// GET - Ambil semua products
 export async function GET() {
-  return new Response(JSON.stringify(products, null, 2), {
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-    },
-  });
+  try {
+    return Response.json(products, { status: 200 });
+  } catch {
+    return Response.json({ error: "Internal server error" }, { status: 500 });
+  }
 }
 
+// POST - Create product baru
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
+    // Validasi
     if (!body.name || !body.price) {
-      return new Response(
-        JSON.stringify({ error: "Name dan Price wajib diisi!" }, null, 2),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json; charset=utf-8" },
-        }
+      return Response.json(
+        { error: "Name dan Price wajib diisi!" },
+        { status: 400 }
       );
     }
 
+    // Create product baru
     const newProduct = {
-      id: products.length + 1,
+      id: products.length > 0 ? Math.max(...products.map((p) => p.id)) + 1 : 1,
       name: body.name,
       price: Number(body.price),
     };
 
     products.push(newProduct);
 
-    return new Response(
-      JSON.stringify(
-        {
-          success: true,
-          message: "Produk Berhasil Ditambahkan",
-          data: newProduct,
-        },
-        null,
-        2
-      ),
+    return Response.json(
       {
-        status: 201,
-        headers: { "Content-Type": "application/json; charset=utf-8" },
-      }
+        success: true,
+        message: "Produk berhasil ditambahkan",
+        data: newProduct,
+      },
+      { status: 201 }
     );
-  } catch (error) {
-    return new Response(JSON.stringify({ error: "Invalid JSON" }, null, 2), {
-      status: 400,
-      headers: { "Content-Type": "application/json; charset=utf-8" },
-    });
+  } catch {
+    return Response.json({ error: "Invalid JSON" }, { status: 400 });
   }
 }
