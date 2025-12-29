@@ -2,6 +2,7 @@
 const products = [
   { id: 1, name: "Laptop", price: 9000000 },
   { id: 2, name: "Handphone", price: 4500000 },
+  { id: 3, name: "bottle", price: 200000 },
 ];
 
 // GET - Ambil semua products
