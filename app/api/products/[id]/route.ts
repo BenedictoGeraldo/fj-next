@@ -1,12 +1,5 @@
-// Import data dari route.ts parent (hack sederhana untuk share data)
-// Dalam real app, ini dari database
-
-// Karena tidak bisa import langsung, kita re-declare
-// Ini hack untuk demo, production pakai database!
-const products = [
-  { id: 1, name: "Laptop", price: 9000000 },
-  { id: 2, name: "Handphone", price: 4500000 },
-];
+// Import shared data
+import { products } from "@/lib/data/products";
 
 type RouteContext = {
   params: Promise<{ id: string }>;

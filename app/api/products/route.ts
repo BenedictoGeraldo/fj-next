@@ -1,9 +1,5 @@
-// Database dummy (dalam real app, ini dari database)
-const products = [
-  { id: 1, name: "Laptop", price: 9000000 },
-  { id: 2, name: "Handphone", price: 4500000 },
-  { id: 3, name: "bottle", price: 200000 },
-];
+// Import shared data
+import { products } from "@/lib/data/products";
 
 // GET - Ambil semua products
 export async function GET() {
