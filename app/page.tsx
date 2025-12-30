@@ -15,5 +15,6 @@ export default function main() {
   // redirect("/learning/day-3-libraries/axios/axios-post");
   // redirect("/learning/day-3-libraries/axios/axios-put");
   // redirect("/learning/day-3-libraries/axios/axios-delete");
-  redirect("/learning/day-3-libraries/zustand");
+  // redirect("/learning/day-3-libraries/zustand");
+  redirect("/learning/day-3-libraries/zod");
 }
